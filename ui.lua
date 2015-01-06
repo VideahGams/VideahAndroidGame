@@ -26,3 +26,68 @@ function ui.draw()
 	end
 
 end
+
+-- Get functions --
+
+function ui:getText(id)
+
+	return ui.buttonlist[id][1]
+
+end
+
+function ui:getX(id)
+
+	return ui.buttonlist[id][2]
+
+end
+
+function ui:getY(id)
+
+	return ui.buttonlist[id][3]
+
+end
+
+function ui:getWidth(id)
+
+	return ui.buttonlist[id][4]
+
+end
+
+function ui:getHeight(id)
+
+	return ui.buttonlist[id][5]
+
+end
+
+-- Set functions --
+
+function ui:setText(id, text)
+
+	ui.buttonlist[id][1] = text
+
+end
+
+function ui:setX(id, x)
+
+	ui.buttonlist[id][2] = x
+
+end
+
+function ui:setY(id, y)
+
+	ui.buttonlist[id][3] = y
+
+end
+
+function ui:setWidth(id, width)
+
+	ui.buttonlist[id][4] = width
+
+end
+
+function ui:setHeight(id, height)
+
+	ui.buttonlist[id][5] = height
+
+end
+
