@@ -20,7 +20,6 @@ require 'state'
 require 'splash'
 require 'panel'
 require 'network'
-require 'lighting'
 require 'global'
 require 'input'
 require 'options'
@@ -32,15 +31,12 @@ require 'ui'
 require 'libs/LoveFrames'
 
 flux = require 'util/flux'
-LightWorld = require 'libs/lightworld'
 
 
 ---------------------------------------------------------------------------------------------------
 -- Main
 
 function love.load()
-
-	lighting.load()
 
 	options.load()
 
