@@ -100,7 +100,7 @@ function menu.GenerateMenuFrame()
 	-- menuframe:Center()
 	-- menuframe:SetState("menu")
 
-	for i=1, #menu.options, 1 do
+	for i=1, #menu.options do
 
 		-- button[i] = loveframes.Create("button", menuframe)
 		-- button[i]:SetText(menu.options[i])
@@ -114,7 +114,7 @@ function menu.GenerateMenuFrame()
 
 		-- end
 
-		ui.createButton(menu.options[i], global.screenWidth / 2, buttonStartPos, 290, 100)
+		ui.createButton(menu.options[i], (global.screenWidth / 2) - 145, buttonStartPos, 290, 100)
 		buttonStartPos = buttonStartPos + 105
 
 	end

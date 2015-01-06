@@ -205,3 +205,9 @@ function love.quit()
 	print("Shutting down ...")
 
 end
+
+function love.touchpressed(id, x, y, pressure)
+
+	ui.touchpressed(id, x, y, pressure)
+
+end

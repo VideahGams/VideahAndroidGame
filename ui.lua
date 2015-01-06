@@ -27,6 +27,21 @@ function ui.draw()
 
 end
 
+function ui.touchpressed(id, x, y, pressure)
+
+	local cx = x * love.graphics.getWidth()
+	local cy = y * love.graphics.getHeight()
+
+	for i=1, #ui.buttonlist do
+
+		if cx >= ui.getX(i) and cx <= ui.getWidth(i) and cy >= ui.getY(i) and cy <= ui.getHeight(i) then
+			menu.title = "SUCCESS"
+		end
+
+	end
+
+end
+
 -- Get functions --
 
 function ui:getText(id)
