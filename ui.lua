@@ -34,7 +34,13 @@ function ui.touchpressed(id, x, y, pressure)
 
 	for i=1, #ui.buttonlist do
 
-		if cx >= ui.getX(i) and cx <= ui.getWidth(i) and cy >= ui.getY(i) and cy <= ui.getHeight(i) then
+		local uix = ui.getX(i)
+		local uiy = ui.getY(i)
+
+		local uiw = ui.getWidth(i)
+		local uih = ui.getHeight(i)
+
+		if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- Oh god is this messy or what?
 			menu.title = "SUCCESS"
 		end
 
@@ -46,15 +52,13 @@ function ui.mousepressed(x, y, button)
 
 	for i=1, #ui.buttonlist do
 
-		--print(i)
+		local uix = ui.getX(i)
+		local uiy = ui.getY(i)
 
-		print(x)
+		local uiw = ui.getWidth(i)
+		local uih = ui.getHeight(i)
 
-		print(y)
-
-		print("X" .. ui.getX(i) .. " Y" .. ui.getY(i))
-
-		if x >= ui.getX(i) and x <= ui.getWidth(i) and y >= ui.getY(i) and y <= ui.getHeight(i) then
+		if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- Yep, still messy.
 			print("SUCCESS")
 		end
 
