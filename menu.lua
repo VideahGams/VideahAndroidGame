@@ -91,28 +91,7 @@ function menu.GenerateMenuFrame()
 	button = {}
 	buttonStartPos = 30
 
-	-- local menuframe = loveframes.Create("frame")
-	-- menuframe:SetName("")
-	-- menuframe:SetDraggable(false)
-	-- menuframe:ShowCloseButton(false)
-	-- menuframe:SetWidth(300)
-	-- menuframe:SetHeight(30 + #menu.options * 55)
-	-- menuframe:Center() 
-	-- menuframe:SetState("menu")
-
 	for i=1, #menu.options do
-
-		-- button[i] = loveframes.Create("button", menuframe)
-		-- button[i]:SetText(menu.options[i])
-		-- button[i]:SetWidth(290)
-		-- button[i]:SetHeight(50)
-		-- button[i]:SetPos(5, buttonStartPos)
-		-- buttonStartPos = buttonStartPos + 55
-		-- button[i].OnClick = function(object, x, y)
-
-		-- 	state:changeState(menu.optionsstate[i])
-
-		-- end
 
 		ui.createButton(menu.options[i], (global.screenWidth / 2) - 145, buttonStartPos, 290, 100, nil, function() state:changeState(menu.optionsstate[i]) end)
 		buttonStartPos = buttonStartPos + 105
