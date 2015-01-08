@@ -1,9 +1,17 @@
 ui = {}
 ui.buttonlist = {}
 
-function ui.createButton(text, x, y, width, height, color)
+function ui.createButton(text, x, y, width, height, color, func)
 
-	local button = {text, x, y, width, height, color}
+	if text == nil then text = "Text" end
+	if x == nil then x = 0 end
+	if y == nil then y = 0 end
+	if width == nil then width = 200 end
+	if height == nil then height = 50 end
+	if color == nil then color = {255, 255, 255} end
+	if func == nil then func = function() end end
+
+	local button = {text, x, y, width, height, color, func}
 
 	table.insert(ui.buttonlist, button)
 
@@ -59,7 +67,7 @@ function ui.mousepressed(x, y, button)
 		local uih = ui.getHeight(i)
 
 		if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- Yep, still messy.
-			print("SUCCESS")
+			ui.buttonlist[i][7]()
 		end
 
 	end
@@ -99,6 +107,12 @@ function ui.getHeight(id)
 
 end
 
+function ui.getFunction(id)
+
+	return ui.buttonlist[id][6]
+
+end
+
 -- Set functions --
 
 function ui.setText(id, text)
@@ -131,3 +145,8 @@ function ui.setHeight(id, height)
 
 end
 
+function ui.setFunction(id, func)
+
+	ui.buttonlist[id][6] = func
+
+end

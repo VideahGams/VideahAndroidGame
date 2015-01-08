@@ -97,7 +97,7 @@ function menu.GenerateMenuFrame()
 	-- menuframe:ShowCloseButton(false)
 	-- menuframe:SetWidth(300)
 	-- menuframe:SetHeight(30 + #menu.options * 55)
-	-- menuframe:Center()
+	-- menuframe:Center() 
 	-- menuframe:SetState("menu")
 
 	for i=1, #menu.options do
@@ -114,7 +114,7 @@ function menu.GenerateMenuFrame()
 
 		-- end
 
-		ui.createButton(menu.options[i], (global.screenWidth / 2) - 145, buttonStartPos, 290, 100)
+		ui.createButton(menu.options[i], (global.screenWidth / 2) - 145, buttonStartPos, 290, 100, nil, function() state:changeState(menu.optionsstate[i]) end)
 		buttonStartPos = buttonStartPos + 105
 
 	end
