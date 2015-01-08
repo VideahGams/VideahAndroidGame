@@ -58,16 +58,20 @@ end
 
 function ui.mousepressed(x, y, button)
 
-	for i=1, #ui.buttonlist do
+	if button == "l" then
 
-		local uix = ui.getX(i)
-		local uiy = ui.getY(i)
+		for i=1, #ui.buttonlist do
 
-		local uiw = ui.getWidth(i)
-		local uih = ui.getHeight(i)
+			local uix = ui.getX(i)
+			local uiy = ui.getY(i)
 
-		if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- Yep, still messy.
-			ui.buttonlist[i][7]()
+			local uiw = ui.getWidth(i)
+			local uih = ui.getHeight(i)
+
+			if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- Yep, still messy.
+				ui.buttonlist[i][7]()
+			end
+
 		end
 
 	end
