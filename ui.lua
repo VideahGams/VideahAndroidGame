@@ -49,7 +49,7 @@ function ui.touchpressed(id, x, y, pressure)
 		local uih = ui.getHeight(i)
 
 		if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- Oh god is this messy or what?
-			menu.title = "SUCCESS"
+			ui.buttonlist[i][7]()
 		end
 
 	end
