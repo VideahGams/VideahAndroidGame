@@ -168,6 +168,8 @@ function love.mousepressed(x, y, button)
  
     input.mousepressed(x, y, button)
 
+    ui.mousepressed(x, y, button)
+
     loveframes.mousepressed(x, y, button)
  
 end

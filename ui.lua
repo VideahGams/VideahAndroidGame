@@ -42,33 +42,54 @@ function ui.touchpressed(id, x, y, pressure)
 
 end
 
+function ui.mousepressed(x, y, button)
+
+	for i=1, #ui.buttonlist do
+
+		--print(i)
+
+		print(x)
+
+		print(y)
+
+		print("X" .. ui.getX(i) .. " Y" .. ui.getY(i))
+
+		if x >= ui.getX(i) and x <= ui.getWidth(i) and y >= ui.getY(i) and y <= ui.getHeight(i) then
+			print("SUCCESS")
+		end
+
+	end
+
+end
+
 -- Get functions --
 
-function ui:getText(id)
+function ui.getText(id)
 
 	return ui.buttonlist[id][1]
 
 end
 
-function ui:getX(id)
+function ui.getX(id)
 
 	return ui.buttonlist[id][2]
 
 end
 
-function ui:getY(id)
+function ui.getY(id)
 
 	return ui.buttonlist[id][3]
 
 end
 
-function ui:getWidth(id)
+function ui.getWidth(id)
+
 
 	return ui.buttonlist[id][4]
 
 end
 
-function ui:getHeight(id)
+function ui.getHeight(id)
 
 	return ui.buttonlist[id][5]
 
@@ -76,31 +97,31 @@ end
 
 -- Set functions --
 
-function ui:setText(id, text)
+function ui.setText(id, text)
 
 	ui.buttonlist[id][1] = text
 
 end
 
-function ui:setX(id, x)
+function ui.setX(id, x)
 
 	ui.buttonlist[id][2] = x
 
 end
 
-function ui:setY(id, y)
+function ui.setY(id, y)
 
 	ui.buttonlist[id][3] = y
 
 end
 
-function ui:setWidth(id, width)
+function ui.setWidth(id, width)
 
 	ui.buttonlist[id][4] = width
 
 end
 
-function ui:setHeight(id, height)
+function ui.setHeight(id, height)
 
 	ui.buttonlist[id][5] = height
 
