@@ -121,21 +121,41 @@ end
 
 function ui.touchpressed(id, x, y, pressure)
 
-	local cx = x * love.graphics.getWidth()
-	local cy = y * love.graphics.getHeight()
+	if button == "l" then
 
-	for i=1, #ui.buttonlist do
+		for i=1, #ui.buttonlist do
 
-		if ui.getState(i) == state:getState() or ui.getState(i) == "all" then
+			if ui.getState(i) == state:getState() or ui.getState(i) == "all" then
 
-			local uix = ui.getX(i)
-			local uiy = ui.getY(i)
+				local uix = ui.getX(i)
+				local uiy = ui.getY(i)
 
-			local uiw = ui.getWidth(i)
-			local uih = ui.getHeight(i)
+				local uiw = ui.getWidth(i)
+				local uih = ui.getHeight(i)
 
-			if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- Oh god is this messy or what?
-				ui.buttonlist[i][7]()
+				if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- Oh god is this messy or what?
+					ui.buttonlist[i][7]()
+				end
+
+			end
+
+		end
+
+		for i=1, #ui.checkboxlist do
+
+			if ui.getState(i, "checkbox") == state:getState() or ui.getState(i, "checkbox") == "all" then
+
+				local uix = ui.getX(i, "checkbox")
+				local uiy = ui.getY(i, "checkbox")
+
+				local uiw = ui.getWidth(i, "checkbox")
+				local uih = ui.getHeight(i, "checkbox")
+				local bool = ui.getBoolean(i, "checkbox")
+
+				if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- Yup, still messy.
+					ui.setBoolean(i, not bool)
+				end
+
 			end
 
 		end
@@ -158,8 +178,27 @@ function ui.mousepressed(x, y, button)
 				local uiw = ui.getWidth(i)
 				local uih = ui.getHeight(i)
 
-				if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- Yep, still messy.
+				if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- It's never gonna stop being messy.
 					ui.buttonlist[i][7]()
+				end
+
+			end
+
+		end
+
+		for i=1, #ui.checkboxlist do
+
+			if ui.getState(i, "checkbox") == state:getState() or ui.getState(i, "checkbox") == "all" then
+
+				local uix = ui.getX(i, "checkbox")
+				local uiy = ui.getY(i, "checkbox")
+
+				local uiw = ui.getWidth(i, "checkbox")
+				local uih = ui.getHeight(i, "checkbox")
+				local bool = ui.getBoolean(i, "checkbox")
+
+				if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- Forever a mess.
+					ui.setBoolean(i, not bool)
 				end
 
 			end
