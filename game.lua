@@ -35,8 +35,6 @@ function game.update(dt)
 
 		player.wheel.r = (player.wheel.roffset - angle)
 
-		print(angle)
-
 	end
 
 end
