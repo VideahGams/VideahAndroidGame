@@ -1,5 +1,6 @@
 ui = {}
 ui.buttonlist = {}
+ui.checkboxlist = {}
 
 function ui.createButton(text, x, y, width, height, color, func, state)
 
@@ -20,6 +21,25 @@ function ui.createButton(text, x, y, width, height, color, func, state)
 
 end
 
+function ui.createCheckbox(text, x, y, width, height, color, boolean, state)
+
+	if text == nil then text = "Text" end
+	if x == nil then x = 0 end
+	if y == nil then y = 0 end
+	if width == nil then width = 50 end
+	if height == nil then height = 50 end
+	if color == nil then color = {255, 255, 255} end
+	if boolean == nil then boolean = false
+	if state == nil then state = "all" end
+
+	local checkbox {text, x, y, width, height, color, boolean, state}
+
+	table.insert(ui.checkboxlist, checkbox)
+
+	util.dprint("Created UI object 'checkbox'")
+
+end
+
 function ui.draw()
 
 	for i=1, #ui.buttonlist do
@@ -35,6 +55,14 @@ function ui.draw()
 			love.graphics.setFont(font.buttontext)
 
 			love.graphics.printf(ui.getText(i), ui.getX(i) + (ui.getWidth(i) / 2), ui.getY(i) + (ui.getHeight(i) / 2) - (font.buttontext:getHeight() / 2), 0, "center")
+
+			if global.debug then -- DEBUG: Draws button ID number to help with debugging.
+
+				love.graphics.setFont(font.default)
+
+				love.graphics.print(i, ui.getX(i) + 10, ui.getY(i) + 10)
+
+			end
 
 		end
 
