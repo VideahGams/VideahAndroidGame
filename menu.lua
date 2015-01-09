@@ -8,8 +8,8 @@ function menu.load()
 	menu.color = {236,240,241}
 
 	menu.image = "data/images/menubg.png"
-	menu.options = {"Start", "Quit"}
-	menu.optionsstate = {"game", "quit"}
+	menu.options = {"Start", "Options", "Quit"}
+	menu.optionsstate = {"game", "options", "quit"}
 
 	menu.type = "color"
 	menu.scrolldirection = "left"

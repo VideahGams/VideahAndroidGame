@@ -5,7 +5,7 @@ function options.load()
 
 	options.applySettings()
 
-	options.createPanel()
+	ui.createButton("back", 0, 0, 290, 100, nil, function() state:changeState("menu") end)
 
 end
 
@@ -63,16 +63,6 @@ function options.resize()
 
 end
 
-function options.createPanel()
-
-	local optionsframe = loveframes.Create("frame")
-	
-	optionsframe:SetName("Options")
-	optionsframe:SetDraggable(false)
-	optionsframe:ShowCloseButton(false)
-	optionsframe:SetWidth(global.screenWidth - 50)
-	optionsframe:SetHeight(global.screenHeight - 50)
-	optionsframe:Center()
-	optionsframe:SetState("options")
+function options.draw()
 
 end
