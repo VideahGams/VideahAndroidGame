@@ -93,6 +93,8 @@ function love.draw()
 
 		menu.GenerateBackground()
 
+		ui.draw()
+
 		loveframes.draw()
 
 	end
@@ -169,11 +171,7 @@ function love.mousepressed(x, y, button)
  
     -- your code
 
-    if state:isStateEnabled("menu") then
-
-    	ui.mousepressed(x, y, button)
-
-    end
+    ui.mousepressed(x, y, button)
 
     if state:isStateEnabled("game") then
 

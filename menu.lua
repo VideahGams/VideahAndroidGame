@@ -93,7 +93,7 @@ function menu.GenerateMenuFrame()
 
 	for i=1, #menu.options do
 
-		ui.createButton(menu.options[i], (global.screenWidth / 2) - 145, buttonStartPos, 290, 100, {48, 62, 80}, function() state:changeState(menu.optionsstate[i]) end)
+		ui.createButton(menu.options[i], (global.screenWidth / 2) - 145, buttonStartPos, 290, 100, {48, 62, 80}, function() state:changeState(menu.optionsstate[i]) end, "menu")
 		buttonStartPos = buttonStartPos + 125
 
 	end

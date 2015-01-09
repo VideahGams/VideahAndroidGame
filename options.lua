@@ -5,7 +5,7 @@ function options.load()
 
 	options.applySettings()
 
-	ui.createButton("back", 0, 0, 290, 100, nil, function() state:changeState("menu") end)
+	ui.createButton("back", 200, 200, 290, 100, nil, function() state:changeState("menu") end, "options")
 
 end
 

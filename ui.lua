@@ -1,7 +1,7 @@
 ui = {}
 ui.buttonlist = {}
 
-function ui.createButton(text, x, y, width, height, color, func)
+function ui.createButton(text, x, y, width, height, color, func, state)
 
 	if text == nil then text = "Text" end
 	if x == nil then x = 0 end
@@ -10,8 +10,9 @@ function ui.createButton(text, x, y, width, height, color, func)
 	if height == nil then height = 50 end
 	if color == nil then color = {255, 255, 255} end
 	if func == nil then func = function() end end
+	if state == nil then state = "all" end
 
-	local button = {text, x, y, width, height, color, func}
+	local button = {text, x, y, width, height, color, func, state}
 
 	table.insert(ui.buttonlist, button)
 
@@ -23,15 +24,19 @@ function ui.draw()
 
 	for i=1, #ui.buttonlist do
 
-		love.graphics.setColor(ui.buttonlist[i][6] or 255,255,255)
+		if ui.getState(i) == state:getState() or ui.getState(i) == "all" then
 
-		util.drawRoundedRectangle("fill", ui.getX(i), ui.getY(i), ui.getWidth(i), ui.getHeight(i), 10, 25)
+			love.graphics.setColor(ui.buttonlist[i][6] or 255,255,255)
 
-		love.graphics.setColor(255, 255, 255)
+			util.drawRoundedRectangle("fill", ui.getX(i), ui.getY(i), ui.getWidth(i), ui.getHeight(i), 10, 25)
 
-		love.graphics.setFont(font.buttontext)
+			love.graphics.setColor(255, 255, 255)
 
-		love.graphics.printf(ui.getText(i), ui.getX(i) + (ui.getWidth(i) / 2), ui.getY(i) + (ui.getHeight(i) / 2) - (font.buttontext:getHeight() / 2), 0, "center")
+			love.graphics.setFont(font.buttontext)
+
+			love.graphics.printf(ui.getText(i), ui.getX(i) + (ui.getWidth(i) / 2), ui.getY(i) + (ui.getHeight(i) / 2) - (font.buttontext:getHeight() / 2), 0, "center")
+
+		end
 
 	end
 
@@ -44,14 +49,18 @@ function ui.touchpressed(id, x, y, pressure)
 
 	for i=1, #ui.buttonlist do
 
-		local uix = ui.getX(i)
-		local uiy = ui.getY(i)
+		if ui.getState(i) == state:getState() or ui.getState(i) == "all" then
 
-		local uiw = ui.getWidth(i)
-		local uih = ui.getHeight(i)
+			local uix = ui.getX(i)
+			local uiy = ui.getY(i)
 
-		if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- Oh god is this messy or what?
-			ui.buttonlist[i][7]()
+			local uiw = ui.getWidth(i)
+			local uih = ui.getHeight(i)
+
+			if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- Oh god is this messy or what?
+				ui.buttonlist[i][7]()
+			end
+
 		end
 
 	end
@@ -64,14 +73,18 @@ function ui.mousepressed(x, y, button)
 
 		for i=1, #ui.buttonlist do
 
-			local uix = ui.getX(i)
-			local uiy = ui.getY(i)
+			if ui.getState(i) == state:getState() or ui.getState(i) == "all" then
 
-			local uiw = ui.getWidth(i)
-			local uih = ui.getHeight(i)
+				local uix = ui.getX(i)
+				local uiy = ui.getY(i)
 
-			if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- Yep, still messy.
-				ui.buttonlist[i][7]()
+				local uiw = ui.getWidth(i)
+				local uih = ui.getHeight(i)
+
+				if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- Yep, still messy.
+					ui.buttonlist[i][7]()
+				end
+
 			end
 
 		end
@@ -113,9 +126,21 @@ function ui.getHeight(id)
 
 end
 
-function ui.getFunction(id)
+function ui.getColor(id)
 
 	return ui.buttonlist[id][6]
+
+end
+
+function ui.getFunction(id)
+
+	return ui.buttonlist[id][7]
+
+end
+
+function ui.getState(id)
+
+	return ui.buttonlist[id][8]
 
 end
 
@@ -151,8 +176,20 @@ function ui.setHeight(id, height)
 
 end
 
+function ui.setColor(id, color)
+
+	ui.buttonlist[id][6] = color
+
+end
+
 function ui.setFunction(id, func)
 
-	ui.buttonlist[id][6] = func
+	ui.buttonlist[id][7] = func
+
+end
+
+function ui.setState(id, state)
+
+	ui.buttonlist[id][8] = state
 
 end
