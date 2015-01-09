@@ -120,7 +120,11 @@ end
 function menu.InternalVariables()
 
 	menu.image = love.graphics.newImage( menu.image )
-	menu.titleimage = love.graphics.newImage( menu.titleimage )
+
+	if menu.titletype == "image" then
+		menu.titleimage = love.graphics.newImage( menu.titleimage )
+	end
+	
 	menu.bgOffset = 0
 
 end

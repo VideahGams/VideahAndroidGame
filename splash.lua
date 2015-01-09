@@ -31,7 +31,7 @@ end
 
 function splash.draw()
 
-	love.graphics.setColor(0,0,0,255)
+	love.graphics.setColor(236,240,241)
 
 	love.graphics.rectangle("fill", 0, 0, global.screenWidth, global.screenHeight)
 
