@@ -24,6 +24,7 @@ require 'global'
 require 'input'
 require 'options'
 require 'ui'
+require 'game'
 
 ---------------------------------------------------------------------------------------------------
 -- Libraries
@@ -58,16 +59,18 @@ function love.load()
 
 	menu.load()
 
+	game.load()
+
 	print("Welcome to VideahEngine " .. global.version .. " !")
 
 end
 
 function love.draw()
 
-	if state:isStateEnabled("draw") then
+	if state:isStateEnabled("game") then
 
-		-- Put game draw code here.
-
+		game.draw()
+		
 	end
 
 	if state:isStateEnabled("splash") then
@@ -165,10 +168,12 @@ end
 function love.mousepressed(x, y, button)
  
     -- your code
- 
-    input.mousepressed(x, y, button)
 
-    ui.mousepressed(x, y, button)
+    if state:isStateEnabled("menu") then
+
+    	ui.mousepressed(x, y, button)
+
+    end
 
     loveframes.mousepressed(x, y, button)
  
