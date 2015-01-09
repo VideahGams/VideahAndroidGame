@@ -50,7 +50,7 @@ function ui.draw()
 		local width = ui.getWidth(i)
 		local height = ui.getHeight(i)
 		local color = ui.getColor(i)
-		local gstate = ui.getState(i,)
+		local gstate = ui.getState(i)
 
 		if gstate == state:getState() or gstate == "all" then
 
