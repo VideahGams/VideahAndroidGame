@@ -42,8 +42,10 @@ function game.update(dt)
 end
 
 function game.mousepressed(x, y, button)
+
+	local angle = math.atan2(global.mouseX - player.wheel.x, global.mouseY - player.wheel.y)
 	
-	player.wheel.roffset = player.wheel.r
+	player.wheel.roffset = player.wheel.r + angle
 	game.isDown = true
 
 end
