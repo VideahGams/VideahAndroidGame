@@ -29,10 +29,10 @@ function ui.createCheckbox(text, x, y, width, height, color, boolean, state)
 	if width == nil then width = 50 end
 	if height == nil then height = 50 end
 	if color == nil then color = {255, 255, 255} end
-	if boolean == nil then boolean = false
+	if boolean == nil then boolean = false end
 	if state == nil then state = "all" end
 
-	local checkbox {text, x, y, width, height, color, boolean, state}
+	local checkbox = {text, x, y, width, height, color, boolean, state}
 
 	table.insert(ui.checkboxlist, checkbox)
 
@@ -123,101 +123,277 @@ end
 
 -- Get functions --
 
-function ui.getText(id)
+function ui.getText(id, type)
 
-	return ui.buttonlist[id][1]
+	if type == nil then type = "button" end
 
-end
+	if type == "button" then
 
-function ui.getX(id)
+		return ui.buttonlist[id][1]
 
-	return ui.buttonlist[id][2]
+	elseif type == "checkbox" then
 
-end
+		return ui.checkboxlist[id][1]
 
-function ui.getY(id)
-
-	return ui.buttonlist[id][3]
+	end
 
 end
 
-function ui.getWidth(id)
+function ui.getX(id, type)
 
+	if type == nil then type = "button" end
 
-	return ui.buttonlist[id][4]
+	if type == "button" then
 
-end
+		return ui.buttonlist[id][2]
 
-function ui.getHeight(id)
+	elseif type == "checkbox" then
 
-	return ui.buttonlist[id][5]
+		return ui.checkboxlist[id][2]
 
-end
-
-function ui.getColor(id)
-
-	return ui.buttonlist[id][6]
+	end
 
 end
 
-function ui.getFunction(id)
+function ui.getY(id, type)
 
-	return ui.buttonlist[id][7]
+	if type == nil then type = "button" end
+
+	if type == "button" then
+
+		return ui.buttonlist[id][3]
+
+	elseif type == "checkbox" then
+
+		return ui.checkboxlist[id][3]
+
+	end
 
 end
 
-function ui.getState(id)
+function ui.getWidth(id, type)
 
-	return ui.buttonlist[id][8]
+
+	if type == nil then type = "button" end
+
+	if type == "button" then
+
+		return ui.buttonlist[id][4]
+
+	elseif type == "checkbox" then
+
+		return ui.checkboxlist[id][4]
+
+	end
+
+end
+
+function ui.getHeight(id, type)
+
+	if type == nil then type = "button" end
+
+	if type == "button" then
+
+		return ui.buttonlist[id][5]
+
+	elseif type == "checkbox" then
+
+		return ui.checkboxlist[id][5]
+
+	end
+
+end
+
+function ui.getColor(id, type)
+
+	if type == nil then type = "button" end
+
+	if type == "button" then
+
+		return ui.buttonlist[id][6]
+
+	elseif type == "checkbox" then
+
+		return ui.checkboxlist[id][6]
+
+	end
+
+end
+
+function ui.getFunction(id, type)
+
+	if type == nil then type = "button" end
+
+	if type == "button" then
+
+		return ui.buttonlist[id][7]
+
+	end
+
+end
+
+function ui.getBoolean(id, type)
+
+	if type == nil then type = "checkbox" end
+
+	if type == "checkbox" then
+
+		return ui.checklist[id][7]
+
+	end
+
+end
+
+function ui.getState(id, type)
+
+	if type == nil then type = "button" end
+
+	if type == "button" then
+
+		return ui.buttonlist[id][8]
+
+	elseif type == "checkbox" then
+
+		return ui.checkboxlist[id][8]
+
+	end
 
 end
 
 -- Set functions --
 
-function ui.setText(id, text)
+function ui.setText(id, text, type)
 
-	ui.buttonlist[id][1] = text
+	if type == nil then type = "button" end
 
-end
+	if type == "button" then
 
-function ui.setX(id, x)
+		ui.buttonlist[id][1] = text
 
-	ui.buttonlist[id][2] = x
+	elseif type == "checkbox" then
 
-end
+		ui.checkboxlist[id][1] = text
 
-function ui.setY(id, y)
-
-	ui.buttonlist[id][3] = y
+	end
 
 end
 
-function ui.setWidth(id, width)
+function ui.setX(id, x, type)
 
-	ui.buttonlist[id][4] = width
+	if type == nil then type = "button" end
 
-end
+	if type == "button" then
 
-function ui.setHeight(id, height)
+		ui.buttonlist[id][2] = x
 
-	ui.buttonlist[id][5] = height
+	elseif type == "checkbox" then
 
-end
+		ui.checkboxlist[id][2] = x
 
-function ui.setColor(id, color)
-
-	ui.buttonlist[id][6] = color
+	end
 
 end
 
-function ui.setFunction(id, func)
+function ui.setY(id, y, type)
 
-	ui.buttonlist[id][7] = func
+	if type == nil then type = "button" end
+
+	if type == "button" then
+
+		ui.buttonlist[id][3] = y
+
+	elseif type == "checkbox" then
+
+		ui.checkboxlist[id][3] = y
+
+	end
 
 end
 
-function ui.setState(id, state)
+function ui.setWidth(id, width, type)
 
-	ui.buttonlist[id][8] = state
+	if type == nil then type = "button" end
+
+	if type == "button" then
+
+		ui.buttonlist[id][4] = width
+
+	elseif type == "checkbox" then
+
+		ui.checkboxlist[id][4] = width
+
+	end
+
+end
+
+function ui.setHeight(id, height, type)
+
+	if type == nil then type = "button" end
+
+	if type == "button" then
+
+		ui.buttonlist[id][5] = height
+
+	elseif type == "checkbox" then
+
+		ui.checkboxlist[id][5] = height
+
+	end
+
+end
+
+function ui.setColor(id, color, type)
+
+	if type == nil then type = "button" end
+
+	if type == "button" then
+
+		ui.buttonlist[id][6] = color
+
+	elseif type == "checkbox" then
+
+		ui.checkboxlist[id][6] = color
+
+	end
+
+end
+
+function ui.setFunction(id, func, type)
+
+	if type == nil then type = "button" end
+
+	if type == "button" then
+
+		ui.buttonlist[id][7] = func
+
+	end
+
+end
+
+function ui.setBoolean(id, bool, type)
+
+	if type == nil then type = "checkbox" end
+
+	if type == "checkbox" then
+
+		ui.checkboxlist[id][7] = bool
+
+	end
+
+end
+
+function ui.setState(id, state, type)
+
+	if type == nil then type = "button" end
+
+	if type == "button" then
+
+		ui.buttonlist[id][8] = state
+
+	elseif type == "checkbox" then
+
+		ui.checkboxlist[id][8] = state
+
+	end
 
 end
