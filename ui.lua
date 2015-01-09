@@ -25,9 +25,9 @@ function ui.draw()
 
 		love.graphics.setColor(ui.buttonlist[i][6] or 255,255,255)
 
-		util.drawRoundedRectangle("fill", ui.getX(i), ui.getY(i), ui.getWidth(i), ui.getHeight(i), 10)
+		util.drawRoundedRectangle("fill", ui.getX(i), ui.getY(i), ui.getWidth(i), ui.getHeight(i), 10, 25)
 
-		love.graphics.setColor(0, 0, 0)
+		love.graphics.setColor(255, 255, 255)
 
 		love.graphics.setFont(font.buttontext)
 
