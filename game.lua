@@ -15,6 +15,8 @@ function game.load()
 	player.wheel.r = 0
 	player.wheel.roffset = 0
 
+	game.score = 0
+
 end
 
 function game.draw()

@@ -12,6 +12,7 @@ function panel.load()
 
 	panel:addVariable("global.fps", function() return global.fps end)
 	panel:addVariable("state", function() return state.currentState end)
+	panel:addVariable("score", function() return game.score end)
 
 end
 
