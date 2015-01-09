@@ -76,6 +76,18 @@ function ui.draw()
 
 			love.graphics.rectangle("line", ui.getX(i, "checkbox"), ui.getY(i, "checkbox"), ui.getWidth(i, "checkbox"), ui.getHeight(i, "checkbox"))
 
+			love.graphics.setFont(font.checkboxtext)
+
+			love.graphics.printf(ui.getText(i, "checkbox"), ui.getX(i, "checkbox") + ui.getWidth(i, "checkbox") + 15, ui.getY(i, "checkbox"), 0, "left")
+
+			if global.debug then -- DEBUG: Draws checkbox ID number to help with debugging.
+
+				love.graphics.setFont(font.default)
+
+				love.graphics.print(i, ui.getX(i, "checkbox") - 10, ui.getY(i, "checkbox") - 10)
+
+			end
+
 		end
 
 	end
