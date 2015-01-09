@@ -9,7 +9,7 @@ state.currentState = "splash"
 function state:changeState(input)
 	self.currentState = input
 
-	util.dprint("Changing state to" .. input)
+	util.dprint("Changing state to " .. input)
 
 end
 
