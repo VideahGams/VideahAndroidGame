@@ -3,9 +3,7 @@ options.resolutions = {}
 
 function options.load()
 
-	options.applySettings()
-
-	ui.createButton("back", 200, 200, 290, 100, nil, function() state:changeState("menu") end, "options")
+	ui.createButton("Back", (global.screenWidth / 2) - 145, (global.screenHeight / 2) - (62 * #menu.options) + 375, 290, 100, {48, 62, 80}, function() state:changeState("menu") end, "options") -- Ew.
 
 end
 

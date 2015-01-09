@@ -39,7 +39,7 @@ flux = require 'util/flux'
 
 function love.load()
 
-	options.load()
+	options.applySettings()
 
 	global.debug = options.settings.settings.debug
 
@@ -58,6 +58,8 @@ function love.load()
 	input.load()
 
 	menu.load()
+
+	options.load()
 
 	game.load()
 
