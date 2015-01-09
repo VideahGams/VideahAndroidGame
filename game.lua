@@ -8,8 +8,9 @@ function game.load()
 	player.wheel.scale = 0.5
 	player.wheel.width = player.wheel.image:getWidth() * player.wheel.scale
 	player.wheel.height = player.wheel.image:getHeight() * player.wheel.scale
-	player.wheel.x = (global.screenWidth / 2) - (player.wheel.width / 2)
-	player.wheel.y = (global.screenHeight / 2) - (player.wheel.height / 2)
+	player.wheel.x = (global.screenWidth / 2)
+	player.wheel.y = (global.screenHeight / 2)
+	player.wheel.r = 0
 
 end
 
@@ -25,6 +26,6 @@ end
 
 function player.wheel.draw()
 
-	love.graphics.draw(player.wheel.image, player.wheel.x, player.wheel.y, 0, player.wheel.scale)
+	love.graphics.draw(player.wheel.image, player.wheel.x, player.wheel.y, player.wheel.r, player.wheel.scale, player.wheel.scale, player.wheel.width, player.wheel.height )
 
 end
