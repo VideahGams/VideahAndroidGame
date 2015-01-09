@@ -168,8 +168,6 @@ function love.keypressed(key, isrepeat)
 end
 
 function love.mousepressed(x, y, button)
- 
-    -- your code
 
     ui.mousepressed(x, y, button)
 
@@ -184,8 +182,6 @@ function love.mousepressed(x, y, button)
 end
  
 function love.mousereleased(x, y, button)
- 
-    -- your code
 
     if state:isStateEnabled("game") then
 
@@ -199,15 +195,11 @@ end
  
 function love.keyreleased(key)
  
-    -- your code
- 
     loveframes.keyreleased(key)
  
 end
 
 function love.textinput(text)
-             
-    -- your code
  
     loveframes.textinput(text)
  
