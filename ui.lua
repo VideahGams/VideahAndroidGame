@@ -68,6 +68,18 @@ function ui.draw()
 
 	end
 
+	for i=1, #ui.checkboxlist do
+
+		if ui.getState(i, "checkbox") == state:getState() or ui.getState(i, "checkbox") == "all" then
+
+			love.graphics.setColor(ui.getColor(i, "checkbox"))
+
+			love.graphics.rectangle("line", ui.getX(i, "checkbox"), ui.getY(i, "checkbox"), ui.getWidth(i, "checkbox"), ui.getHeight(i, "checkbox"))
+
+		end
+
+	end
+
 end
 
 function ui.touchpressed(id, x, y, pressure)
