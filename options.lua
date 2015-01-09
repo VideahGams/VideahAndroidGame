@@ -4,7 +4,7 @@ options.resolutions = {}
 function options.load()
 
 	ui.createButton("Back", (global.screenWidth / 2) - 145, (global.screenHeight / 2) - (62 * #menu.options) + 375, 290, 100, {48, 62, 80}, function() state:changeState("menu") end, "options") -- Ew.
-	ui.createCheckbox("Test", 200, 200, nil, nil, {48, 62, 80}, nil, "options")
+	ui.createCheckbox("Test", 200, 200, nil, nil, {48, 62, 80}, false, "options")
 
 end
 

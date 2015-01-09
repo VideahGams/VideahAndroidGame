@@ -85,6 +85,7 @@ function ui.draw()
 		local height = ui.getHeight(i, "checkbox")
 		local color = ui.getColor(i, "checkbox")
 		local gstate = ui.getState(i, "checkbox")
+		local bool = ui.getBoolean(i, "checkbox")
 
 		if gstate == state:getState() or gstate == "all" then
 
@@ -96,9 +97,13 @@ function ui.draw()
 
 			love.graphics.printf(text, x + width + 15, y, 0, "left")
 
-			love.graphics.line( x, y, x + width, y + height)
+			if bool then
 
-			love.graphics.line( x, y + height, x + width, y)
+				love.graphics.line( x, y, x + width, y + height)
+
+				love.graphics.line( x, y + height, x + width, y)
+
+			end
 
 			if global.debug then -- DEBUG: Draws checkbox ID number to help with debugging.
 
@@ -282,7 +287,7 @@ function ui.getBoolean(id, type)
 
 	if type == "checkbox" then
 
-		return ui.checklist[id][7]
+		return ui.checkboxlist[id][7]
 
 	end
 
