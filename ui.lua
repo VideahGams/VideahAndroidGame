@@ -44,17 +44,25 @@ function ui.draw()
 
 	for i=1, #ui.buttonlist do
 
-		if ui.getState(i) == state:getState() or ui.getState(i) == "all" then
+		local text = ui.getText(i, "checkbox")
+		local x = ui.getX(i, "checkbox")
+		local y = ui.getY(i, "checkbox")
+		local width = ui.getWidth(i, "checkbox")
+		local height = ui.getHeight(i, "checkbox")
+		local color = ui.getColor(i, "checkbox")
+		local gstate = ui.getState(i, "checkbox")
 
-			love.graphics.setColor(ui.getColor(i))
+		if gstate == state:getState() or gstate == "all" then
 
-			util.drawRoundedRectangle("fill", ui.getX(i), ui.getY(i), ui.getWidth(i), ui.getHeight(i), 10, 25)
+			love.graphics.setColor(color)
+
+			util.drawRoundedRectangle("fill", x, y, width, height, 10, 25)
 
 			love.graphics.setColor(255, 255, 255)
 
 			love.graphics.setFont(font.buttontext)
 
-			love.graphics.printf(ui.getText(i), ui.getX(i) + (ui.getWidth(i) / 2), ui.getY(i) + (ui.getHeight(i) / 2) - (font.buttontext:getHeight() / 2), 0, "center")
+			love.graphics.printf(text, x + (width / 2), y + (height / 2) - (font.buttontext:getHeight() / 2), 0, "center")
 
 			if global.debug then -- DEBUG: Draws button ID number to help with debugging.
 
@@ -70,21 +78,33 @@ function ui.draw()
 
 	for i=1, #ui.checkboxlist do
 
-		if ui.getState(i, "checkbox") == state:getState() or ui.getState(i, "checkbox") == "all" then
+		local text = ui.getText(i, "checkbox")
+		local x = ui.getX(i, "checkbox")
+		local y = ui.getY(i, "checkbox")
+		local width = ui.getWidth(i, "checkbox")
+		local height = ui.getHeight(i, "checkbox")
+		local color = ui.getColor(i, "checkbox")
+		local gstate = ui.getState(i, "checkbox")
 
-			love.graphics.setColor(ui.getColor(i, "checkbox"))
+		if gstate == state:getState() or gstate == "all" then
 
-			love.graphics.rectangle("line", ui.getX(i, "checkbox"), ui.getY(i, "checkbox"), ui.getWidth(i, "checkbox"), ui.getHeight(i, "checkbox"))
+			love.graphics.setColor(color)
+
+			love.graphics.rectangle("line", x, y, width, height)
 
 			love.graphics.setFont(font.checkboxtext)
 
-			love.graphics.printf(ui.getText(i, "checkbox"), ui.getX(i, "checkbox") + ui.getWidth(i, "checkbox") + 15, ui.getY(i, "checkbox"), 0, "left")
+			love.graphics.printf(text, x + width + 15, y, 0, "left")
+
+			love.graphics.line( x, y, x + width, y + height)
+
+			love.graphics.line( x, y + height, x + width, y)
 
 			if global.debug then -- DEBUG: Draws checkbox ID number to help with debugging.
 
 				love.graphics.setFont(font.default)
 
-				love.graphics.print(i, ui.getX(i, "checkbox") - 10, ui.getY(i, "checkbox") - 10)
+				love.graphics.print(i, x - 10, y - 10)
 
 			end
 
