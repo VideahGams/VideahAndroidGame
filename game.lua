@@ -4,6 +4,8 @@ player.wheel = {}
 
 function game.load()
 
+	game.isDown = false
+
 	player.wheel.image = love.graphics.newImage("data/images/gamecircle.png")
 	player.wheel.scale = 0.5
 	player.wheel.width = player.wheel.image:getWidth() * player.wheel.scale
@@ -11,6 +13,7 @@ function game.load()
 	player.wheel.x = (global.screenWidth / 2)
 	player.wheel.y = (global.screenHeight / 2)
 	player.wheel.r = 0
+	player.wheel.roffset = 0
 
 end
 
@@ -24,8 +27,35 @@ function game.draw()
 
 end
 
+function game.update(dt)
+
+	if game.isDown then
+
+		local angle = math.atan2(global.mouseX - player.wheel.x, global.mouseY - player.wheel.y)
+
+		player.wheel.r = (player.wheel.roffset - angle)
+
+		print(angle)
+
+	end
+
+end
+
+function game.mousepressed(x, y, button)
+	
+	player.wheel.roffset = player.wheel.r
+	game.isDown = true
+
+end
+
+function game.mousereleased(x, y, button)
+
+	game.isDown = false
+
+end
+
 function player.wheel.draw()
 
-	love.graphics.draw(player.wheel.image, player.wheel.x, player.wheel.y, player.wheel.r, player.wheel.scale, player.wheel.scale, player.wheel.width, player.wheel.height )
+	love.graphics.draw(player.wheel.image, player.wheel.x, player.wheel.y, player.wheel.r, player.wheel.scale, player.wheel.scale, player.wheel.width, player.wheel.height)
 
 end

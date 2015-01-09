@@ -113,7 +113,7 @@ function love.update(dt)
 
 	if state:isStateEnabled("game") then
 
-		-- Put game update code here.
+		game.update(dt)
 
 	end
 
@@ -175,6 +175,12 @@ function love.mousepressed(x, y, button)
 
     end
 
+    if state:isStateEnabled("game") then
+
+    	game.mousepressed(x, y, button)
+
+    end
+
     loveframes.mousepressed(x, y, button)
  
 end
@@ -182,6 +188,12 @@ end
 function love.mousereleased(x, y, button)
  
     -- your code
+
+    if state:isStateEnabled("game") then
+
+    	game.mousereleased(x, y, button)
+
+    end
  
     loveframes.mousereleased(x, y, button)
  
