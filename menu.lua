@@ -8,8 +8,8 @@ function menu.load()
 	menu.color = {236,240,241}
 
 	menu.image = "data/images/menubg.png"
-	menu.options = {"Start", "Options", "Quit"}
-	menu.optionsstate = {"game", "options", "quit"}
+	menu.options = {"Start", "Quit"}
+	menu.optionsstate = {"game", "quit"}
 
 	menu.type = "color"
 	menu.scrolldirection = "left"
@@ -89,12 +89,12 @@ end
 function menu.GenerateMenuFrame()
 
 	button = {}
-	buttonStartPos = 30
+	buttonStartPos = (global.screenHeight / 2) - (62 * #menu.options)
 
 	for i=1, #menu.options do
 
 		ui.createButton(menu.options[i], (global.screenWidth / 2) - 145, buttonStartPos, 290, 100, nil, function() state:changeState(menu.optionsstate[i]) end)
-		buttonStartPos = buttonStartPos + 105
+		buttonStartPos = buttonStartPos + 125
 
 	end
 

@@ -29,7 +29,9 @@ function ui.draw()
 
 		love.graphics.setColor(0, 0, 0)
 
-		love.graphics.print(ui.buttonlist[i][1], ui.buttonlist[i][2], ui.buttonlist[i][3])
+		love.graphics.setFont(font.buttontext)
+
+		love.graphics.printf(ui.getText(i), ui.getX(i) + (ui.getWidth(i) / 2), ui.getY(i) + (ui.getHeight(i) / 2) - (font.buttontext:getHeight() / 2), 0, "center")
 
 	end
 
