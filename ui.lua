@@ -46,7 +46,7 @@ function ui.draw()
 
 		if ui.getState(i) == state:getState() or ui.getState(i) == "all" then
 
-			love.graphics.setColor(ui.buttonlist[i][6] or 255,255,255)
+			love.graphics.setColor(ui.getColor(i))
 
 			util.drawRoundedRectangle("fill", ui.getX(i), ui.getY(i), ui.getWidth(i), ui.getHeight(i), 10, 25)
 
