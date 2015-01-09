@@ -44,13 +44,13 @@ function ui.draw()
 
 	for i=1, #ui.buttonlist do
 
-		local text = ui.getText(i, "checkbox")
-		local x = ui.getX(i, "checkbox")
-		local y = ui.getY(i, "checkbox")
-		local width = ui.getWidth(i, "checkbox")
-		local height = ui.getHeight(i, "checkbox")
-		local color = ui.getColor(i, "checkbox")
-		local gstate = ui.getState(i, "checkbox")
+		local text = ui.getText(i)
+		local x = ui.getX(i)
+		local y = ui.getY(i)
+		local width = ui.getWidth(i)
+		local height = ui.getHeight(i)
+		local color = ui.getColor(i)
+		local gstate = ui.getState(i,)
 
 		if gstate == state:getState() or gstate == "all" then
 
