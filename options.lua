@@ -134,6 +134,7 @@ function options.obviouslynotaneasteregg()
 		if options.counter == 20 then
 
 			menu.title = "Easter Egg Activated!"
+			player.wheel.image = love.graphics.newImage("data/images/notaneasteregg.png")
 
 		end
 
