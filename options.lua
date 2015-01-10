@@ -4,7 +4,7 @@ options.resolutions = {}
 function options.load()
 
 	ui.createButton("Back", (global.screenWidth / 2) - 145, (global.screenHeight / 2) - (62 * #menu.options) + 375, 290, 100, {48, 62, 80}, function() state:changeState("menu") end, "options") -- Ew.
-	ui.createCheckbox("Color Locking", (global.screenWidth / 2) - 75, (global.screenHeight / 2) - (62 * (#menu.options + 4)) + 400, nil, nil, {48, 62, 80}, false, "options")
+	ui.createCheckbox("Color Locking", (global.screenWidth / 2) - 75, (global.screenHeight / 2) - (62 * (#menu.options + 4)) + 400, nil, nil, {48, 62, 80}, false, "options") -- Still Ew.
 
 	for i=1, 4 do
 
@@ -79,6 +79,45 @@ function options.resize()
 
 end
 
-function options.draw()
+function options.update(dt)
+
+	if ui.getBoolean(1) then
+
+		local color = {}
+
+		color[5] = {231, 76, 60}
+		
+		color[6] = {46, 204, 113}
+		
+		color[7] ={52, 152, 219}
+		
+		color[8] ={241, 196, 15}
+
+		for i=5, 8 do
+
+		ui.setColor(i, color[i])
+
+		end
+
+	else
+
+		local color = {}
+
+		color[5] = {231, 76, 60, 100}
+		
+		color[6] = {46, 204, 113, 100}
+		
+		color[7] ={52, 152, 219, 100}
+		
+		color[8] ={241, 196, 15, 100}
+
+		for i=5, 8 do
+
+		ui.setColor(i, color[i])
+
+		end
+
+	end
+
 
 end

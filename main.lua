@@ -131,6 +131,8 @@ function love.update(dt)
 
 	if state:isStateEnabled("options") then
 
+		options.update(dt)
+
 		loveframes.SetState("options")
 
 	end
