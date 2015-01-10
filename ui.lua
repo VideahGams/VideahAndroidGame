@@ -166,45 +166,66 @@ end
 
 function ui.mousepressed(x, y, button)
 
+	local isPressed = false
+
 	if button == "l" then
 
-		for i=1, #ui.buttonlist do
+		if isPressed == false then
 
-			if ui.getState(i) == state:getState() or ui.getState(i) == "all" then
+			for i=1, #ui.buttonlist do
 
-				local uix = ui.getX(i)
-				local uiy = ui.getY(i)
+				if isPressed ==false then
 
-				local uiw = ui.getWidth(i)
-				local uih = ui.getHeight(i)
+					if ui.getState(i) == state:getState() or ui.getState(i) == "all" then
 
-				if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- It's never gonna stop being messy.
-					ui.buttonlist[i][7]()
+						local uix = ui.getX(i)
+						local uiy = ui.getY(i)
+
+						local uiw = ui.getWidth(i)
+						local uih = ui.getHeight(i)
+
+						if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- It's never gonna stop being messy.
+
+							ui.buttonlist[i][7]()
+							isPressed = true
+
+						end
+
+					end
+
 				end
 
 			end
 
 		end
 
-		for i=1, #ui.checkboxlist do
+		if isPressed == false then
 
-			if ui.getState(i, "checkbox") == state:getState() or ui.getState(i, "checkbox") == "all" then
+			for i=1, #ui.checkboxlist do
 
-				local uix = ui.getX(i, "checkbox")
-				local uiy = ui.getY(i, "checkbox")
+				if isPressed == false then
 
-				local uiw = ui.getWidth(i, "checkbox")
-				local uih = ui.getHeight(i, "checkbox")
-				local bool = ui.getBoolean(i, "checkbox")
+					if ui.getState(i, "checkbox") == state:getState() or ui.getState(i, "checkbox") == "all" then
 
-				if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- Forever a mess.
-					ui.setBoolean(i, not bool)
+						local uix = ui.getX(i, "checkbox")
+						local uiy = ui.getY(i, "checkbox")
+
+						local uiw = ui.getWidth(i, "checkbox")
+						local uih = ui.getHeight(i, "checkbox")
+						local bool = ui.getBoolean(i, "checkbox")
+
+						if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- Forever a mess.
+							ui.setBoolean(i, not bool)
+							isPressed = true
+						end
+
+					end
+
 				end
 
 			end
 
 		end
-
 	end
 
 end

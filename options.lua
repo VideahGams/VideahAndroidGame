@@ -1,12 +1,13 @@
 options = {}
 options.resolutions = {}
+options.counter = 0
 
 function options.load()
 
 	ui.createButton("Back", (global.screenWidth / 2) - 145, (global.screenHeight / 2) - (62 * #menu.options) + 375, 290, 100, {48, 62, 80}, function() state:changeState("menu") end, "options") -- Ew.
 	ui.createCheckbox("Color Locking", (global.screenWidth / 2) - 75, (global.screenHeight / 2) - (62 * (#menu.options + 4)) + 400, nil, nil, {48, 62, 80}, false, "options") -- Still Ew.
 
-	ui.createButton("", ((global.screenWidth / 2) - 200), (global.screenHeight / 2) - (62 * (#menu.options + 2)) + 365, 400, 95, {48, 62, 80}, nil, "options")
+	ui.createButton("", ((global.screenWidth / 2) - 200), (global.screenHeight / 2) - (62 * (#menu.options + 2)) + 365, 400, 95, {48, 62, 80}, function() options.obviouslynotaneasteregg() end, "options") -- Background
 
 	for i=1, 4 do
 
@@ -121,5 +122,21 @@ function options.update(dt)
 
 	end
 
+
+end
+
+function options.obviouslynotaneasteregg()
+
+	if ui.getBoolean(1) == false then
+
+		options.counter = options.counter + 1
+
+		if options.counter == 20 then
+
+			menu.title = "Easter Egg Activated!"
+
+		end
+
+	end
 
 end
