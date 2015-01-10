@@ -6,6 +6,8 @@ function options.load()
 	ui.createButton("Back", (global.screenWidth / 2) - 145, (global.screenHeight / 2) - (62 * #menu.options) + 375, 290, 100, {48, 62, 80}, function() state:changeState("menu") end, "options") -- Ew.
 	ui.createCheckbox("Color Locking", (global.screenWidth / 2) - 75, (global.screenHeight / 2) - (62 * (#menu.options + 4)) + 400, nil, nil, {48, 62, 80}, false, "options") -- Still Ew.
 
+	ui.createButton("", ((global.screenWidth / 2) - 200), (global.screenHeight / 2) - (62 * (#menu.options + 2)) + 365, 400, 95, {48, 62, 80}, nil, "options")
+
 	for i=1, 4 do
 
 		local color = {}
@@ -19,7 +21,7 @@ function options.load()
 		color[4] ={241, 196, 15}
 
 
-		ui.createButton("", ((global.screenWidth / 2) - 200) + (i * 70), (global.screenHeight / 2) - (62 * (#menu.options + 2)) + 375, 50, 50, color[i], nil, "options")
+		ui.createButton("", ((global.screenWidth / 2) - 275) + (i * 95), (global.screenHeight / 2) - (62 * (#menu.options + 2)) + 375, 75, 75, color[i], nil, "options")
 
 	end
 
@@ -85,15 +87,15 @@ function options.update(dt)
 
 		local color = {}
 
-		color[5] = {231, 76, 60}
+		color[6] = {231, 76, 60}
 		
-		color[6] = {46, 204, 113}
+		color[7] = {46, 204, 113}
 		
-		color[7] ={52, 152, 219}
+		color[8] ={52, 152, 219}
 		
-		color[8] ={241, 196, 15}
+		color[9] ={241, 196, 15}
 
-		for i=5, 8 do
+		for i=6, 9 do
 
 		ui.setColor(i, color[i])
 
@@ -103,15 +105,15 @@ function options.update(dt)
 
 		local color = {}
 
-		color[5] = {231, 76, 60, 100}
+		color[6] = {231, 76, 60, 100}
 		
-		color[6] = {46, 204, 113, 100}
+		color[7] = {46, 204, 113, 100}
 		
-		color[7] ={52, 152, 219, 100}
+		color[8] ={52, 152, 219, 100}
 		
-		color[8] ={241, 196, 15, 100}
+		color[9] ={241, 196, 15, 100}
 
-		for i=5, 8 do
+		for i=6, 9 do
 
 		ui.setColor(i, color[i])
 
