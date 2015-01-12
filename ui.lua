@@ -1,8 +1,9 @@
 ui = {}
 ui.buttonlist = {}
 ui.checkboxlist = {}
+ui.isPressed = false
 
-function ui.createButton(text, x, y, width, height, color, func, state)
+function ui.createButton(text, x, y, width, height, color, func, state, status, selected)
 
 	if text == nil then text = "Text" end
 	if x == nil then x = 0 end
@@ -12,8 +13,10 @@ function ui.createButton(text, x, y, width, height, color, func, state)
 	if color == nil then color = {255, 255, 255} end
 	if func == nil then func = function() end end
 	if state == nil then state = "all" end
+	if status == nil then status = true end
+	if selected == nil then selected = false end
 
-	local button = {text, x, y, width, height, color, func, state}
+	local button = {text, x, y, width, height, color, func, state, status, selected}
 
 	table.insert(ui.buttonlist, button)
 
@@ -51,8 +54,15 @@ function ui.draw()
 		local height = ui.getHeight(i)
 		local color = ui.getColor(i)
 		local gstate = ui.getState(i)
+		local selected = ui.getSelected(i)
 
 		if gstate == state:getState() or gstate == "all" then
+
+			if selected then
+
+				util.drawRoundedRectangle("fill", x - 3, y - 3, width + 6, height + 6, 10, 25)
+
+			end
 
 			love.graphics.setColor(color)
 
@@ -166,28 +176,32 @@ end
 
 function ui.mousepressed(x, y, button)
 
-	local isPressed = false
+	ui.isPressed = false
 
 	if button == "l" then
 
-		if isPressed == false then
+		if ui.isPressed == false then
 
 			for i=1, #ui.buttonlist do
 
-				if isPressed ==false then
+				if ui.isPressed ==false then
 
-					if ui.getState(i) == state:getState() or ui.getState(i) == "all" then
+					if ui.getEnabled(i) then
 
-						local uix = ui.getX(i)
-						local uiy = ui.getY(i)
+						if ui.getState(i) == state:getState() or ui.getState(i) == "all" then
 
-						local uiw = ui.getWidth(i)
-						local uih = ui.getHeight(i)
+							local uix = ui.getX(i)
+							local uiy = ui.getY(i)
 
-						if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- It's never gonna stop being messy.
+							local uiw = ui.getWidth(i)
+							local uih = ui.getHeight(i)
 
-							ui.buttonlist[i][7]()
-							isPressed = true
+							if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- It's never gonna stop being messy.
+
+								ui.isPressed = true
+								ui.buttonlist[i][7]()
+
+							end
 
 						end
 
@@ -199,24 +213,28 @@ function ui.mousepressed(x, y, button)
 
 		end
 
-		if isPressed == false then
+		if ui.isPressed == false then
 
 			for i=1, #ui.checkboxlist do
 
-				if isPressed == false then
+				if ui.isPressed == false then
 
-					if ui.getState(i, "checkbox") == state:getState() or ui.getState(i, "checkbox") == "all" then
+					if ui.getEnabled(i) then
 
-						local uix = ui.getX(i, "checkbox")
-						local uiy = ui.getY(i, "checkbox")
+						if ui.getState(i, "checkbox") == state:getState() or ui.getState(i, "checkbox") == "all" then
 
-						local uiw = ui.getWidth(i, "checkbox")
-						local uih = ui.getHeight(i, "checkbox")
-						local bool = ui.getBoolean(i, "checkbox")
+							local uix = ui.getX(i, "checkbox")
+							local uiy = ui.getY(i, "checkbox")
 
-						if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- Forever a mess.
-							ui.setBoolean(i, not bool)
-							isPressed = true
+							local uiw = ui.getWidth(i, "checkbox")
+							local uih = ui.getHeight(i, "checkbox")
+							local bool = ui.getBoolean(i, "checkbox")
+
+							if x >= uix and x <= uix + uiw and y >= uiy and y <= uiy + uih then -- Forever a mess.
+								ui.isPressed = true
+								ui.setBoolean(i, not bool)
+							end
+
 						end
 
 					end
@@ -369,6 +387,30 @@ function ui.getState(id, type)
 
 end
 
+function ui.getEnabled(id, type)
+
+	if type == nil then type = "button" end
+
+	if type == "button" then
+
+		return ui.buttonlist[id][9]
+
+	end
+
+end
+
+function ui.getSelected(id, type)
+
+	if type == nil then type = "button" end
+
+	if type == "button" then
+
+		return ui.buttonlist[id][10]
+
+	end
+
+end
+
 -- Set functions --
 
 function ui.setText(id, text, type)
@@ -502,6 +544,30 @@ function ui.setState(id, state, type)
 	elseif type == "checkbox" then
 
 		ui.checkboxlist[id][8] = state
+
+	end
+
+end
+
+function ui.setEnabled(id, status, type)
+
+	if type == nil then type = "button" end
+
+	if type == "button" then
+
+		ui.buttonlist[id][9] = status
+
+	end
+
+end
+
+function ui.setSelected(id, bool, type)
+
+	if type == nil then type = "button" end
+
+	if type == "button" then
+
+		ui.buttonlist[id][10] = bool
 
 	end
 

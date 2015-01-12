@@ -49,10 +49,6 @@ function love.load()
 
 	network.load()
 
-	splash.load()
-
-	panel.load()
-
 	font.load()
 	
 	input.load()
@@ -62,6 +58,10 @@ function love.load()
 	options.load()
 
 	game.load()
+
+	splash.load()
+
+	panel.load()
 
 	print("Welcome to VideahEngine " .. global.version .. " !")
 

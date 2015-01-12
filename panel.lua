@@ -2,18 +2,19 @@ panel = {}
 panel.namelist = {}
 panel.functionlist = {}
 
-function panel.load()
+panel.x = 15
+panel.y = 15
+panel.width = 250
+panel.height = 34
+panel.location = "upper-right"
 
-	panel.x = 15
-	panel.y = 15
-	panel.width = 250
-	panel.height = 34
-	panel.location = "upper-right"
+function panel.load()
 
 	panel:addVariable("global.fps", function() return global.fps end)
 	panel:addVariable("state", function() return state.currentState end)
 	panel:addVariable("score", function() return game.score end)
-	panel:addVariable("counter", function() return options.counter end)
+	panel:addVariable("isColorLocked", function() return tostring(ui.getBoolean(1)) end)
+	panel:addVariable("lockedcolor", function() return player.wheel.lockedcolor end)
 
 end
 
