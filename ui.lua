@@ -3,6 +3,8 @@ ui.buttonlist = {}
 ui.checkboxlist = {}
 ui.isPressed = false
 
+print("Loaded User Interface system ...")
+
 function ui.createButton(text, x, y, width, height, color, func, state, status, selected)
 
 	if text == nil then text = "Text" end

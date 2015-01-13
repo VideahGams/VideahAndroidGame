@@ -18,6 +18,7 @@ function game.load()
 
 	game.score = 0
 
+	print("Loaded game code ...")
 end
 
 function game.draw()
