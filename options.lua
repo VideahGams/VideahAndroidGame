@@ -1,5 +1,4 @@
 options = {}
-options.resolutions = {}
 options.counter = 0
 
 function options.load()
@@ -28,22 +27,6 @@ function options.load()
 end
 
 function options.applySettings()
-
-	options.resolutions[#options.resolutions+1] = "1200x768"
-	options.resolutions[#options.resolutions+1] = "1200x900"
-	options.resolutions[#options.resolutions+1] = "1280x1024"
-	options.resolutions[#options.resolutions+1] = "1440x900"
-	options.resolutions[#options.resolutions+1] = "1680x1050"
-	options.resolutions[#options.resolutions+1] = "1600x900"
-	options.resolutions[#options.resolutions+1] = "1600x1200"
-	options.resolutions[#options.resolutions+1] = "1366x768"
-	options.resolutions[#options.resolutions+1] = "1920x1200"
-	options.resolutions[#options.resolutions+1] = "2560x1600"
-	options.resolutions[#options.resolutions+1] = "1280x720"
-	options.resolutions[#options.resolutions+1] = "1920x1080"
-	options.resolutions[#options.resolutions+1] = "2560x1440"
-	options.resolutions[#options.resolutions+1] = "2560x1600"
-
 
 	if love.filesystem.exists("cfg/settings.ini") == false then
         local defaultSettings = 
