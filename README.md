@@ -1,7 +1,23 @@
-VideahAndroidGame
-==
+## VideahAndroidGame
+
 
 A small android game project to test VideahEngine on android.
+
+### Completed:
+
+ * Mobile User Interface
+ * Color-based lock option
+ * Menu System
+ * Player wheel with 2 types of turning
+ 
+### TODO:
+
+ * Gameplay
+ * Juicing
+ * Code Cleanup
+ * More options
+ * Look into potentional iOS Port
+
 
 ## Licence
 
