@@ -103,6 +103,8 @@ function love.draw()
 
 	global.fps = love.timer.getFPS()
 
+	state.draw()
+
 	panel.draw()
 
 end

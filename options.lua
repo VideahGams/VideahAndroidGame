@@ -3,7 +3,7 @@ options.counter = 0
 
 function options.load()
 
-	ui.createButton("Back", (global.screenWidth / 2) - 145, (global.screenHeight / 2) - (62 * #menu.options) + 375, 290, 100, {48, 62, 80}, function() state:changeState("menu") end, "options") -- Ew.
+	ui.createButton("Back", (global.screenWidth / 2) - 145, (global.screenHeight / 2) - (62 * #menu.options) + 375, 290, 100, {48, 62, 80}, function() state.fadeToState("menu", 0.5) end, "options") -- Ew.
 	ui.createCheckbox("Color Locking", (global.screenWidth / 2) - 75, (global.screenHeight / 2) - (62 * (#menu.options + 4)) + 400, nil, nil, {48, 62, 80}, false, "options") -- Still Ew.
 
 	ui.createButton("", ((global.screenWidth / 2) - 200), (global.screenHeight / 2) - (62 * (#menu.options + 2)) + 365, 400, 95, {48, 62, 80}, function() options.obviouslynotaneasteregg() ui.setSelected(i, true) end, "options") -- Background
