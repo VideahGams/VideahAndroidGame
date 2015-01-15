@@ -1,5 +1,6 @@
 state = {}
 state.transparency = 0
+state.fading = false
 
 print("Loaded gamestate system ...")
 
@@ -36,9 +37,14 @@ function state.fadeToState(input, duration)
 
 	if duration == nil then duration = 1 end
 
-	print("HUE")
-	state.fadeout = flux.to(state, duration, { transparency = 255 })
-	:oncomplete(function() state.fadeIn(input, duration) end)
+	if state.fading == false then
+
+		state.fadeout = flux.to(state, duration, { transparency = 255 })
+		:oncomplete(function() state.fadeIn(input, duration) end)
+
+		state.fading = true
+
+	end
 
 end
 
@@ -49,6 +55,8 @@ function state.fadeIn(input, duration)
 	state:changeState(input)
 
 	state.fadeout = flux.to(state, duration, { transparency = 0 })
+
+	state.fading = false
 
 end
 
