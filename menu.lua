@@ -9,7 +9,7 @@ function menu.load()
 
 	menu.image = "data/images/menubg.png"
 	menu.options = {"Start", "Options", "Quit"}
-	menu.optionsstate = {"game", "options", "quit"}
+	menu.optionsstate = {"difficulty", "options", "quit"}
 
 	menu.type = "color"
 	menu.scrolldirection = "left"

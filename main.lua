@@ -25,6 +25,7 @@ require 'input'
 require 'options'
 require 'ui'
 require 'game'
+require 'difficulty'
 
 ---------------------------------------------------------------------------------------------------
 -- Libraries
@@ -63,6 +64,8 @@ function love.load()
 
 	panel.load()
 
+	dif.load()
+
 	print("Welcome to VideahEngine " .. global.version .. " !")
 
 end
@@ -85,8 +88,6 @@ function love.draw()
 
 		menu.draw()
 
-		ui.draw()
-
 		loveframes.draw()
 
 	end
@@ -95,13 +96,19 @@ function love.draw()
 
 		menu.GenerateBackground()
 
-		ui.draw()
-
 		loveframes.draw()
 
 	end
 
+	if state:isStateEnabled("difficulty") then
+
+		menu.GenerateBackground()
+
+	end
+
 	global.fps = love.timer.getFPS()
+
+	ui.draw()
 
 	state.draw()
 
