@@ -17,7 +17,6 @@ require 'menu'
 require 'fonts'
 require 'camera'
 require 'state'
-require 'splash'
 require 'panel'
 require 'network'
 require 'global'
@@ -31,6 +30,7 @@ require 'difficulty'
 -- Libraries
 
 require 'libs/LoveFrames'
+splashy = require 'libs/splashy'
 
 flux = require 'util/flux'
 
@@ -39,6 +39,11 @@ flux = require 'util/flux'
 -- Main
 
 function love.load()
+
+	splashy.addSplash(love.graphics.newImage("data/images/splashes/videahenginesplash.png"))
+	splashy.addSplash(love.graphics.newImage("data/images/splashes/love.png"))
+
+	splashy.onComplete(function() state.fadeToState("menu") end)
 
 	options.applySettings()
 
@@ -60,8 +65,6 @@ function love.load()
 
 	game.load()
 
-	splash.load()
-
 	panel.load()
 
 	dif.load()
@@ -80,7 +83,11 @@ function love.draw()
 
 	if state:isStateEnabled("splash") then
 
-		splash.draw()
+		love.graphics.setColor(236,240,241)
+
+		love.graphics.rectangle("fill", 0, 0, global.screenWidth, global.screenHeight)
+
+		splashy.draw()
 
 	end
 
@@ -123,6 +130,12 @@ function love.update(dt)
 	flux.update(dt)
 
 	love.audio.update()
+
+	if state:isStateEnabled("splash") then
+
+		splashy.update(dt)
+
+	end
 
 	if state:isStateEnabled("game") then
 
@@ -173,7 +186,13 @@ function love.keypressed(key, isrepeat)
 	end
 
 	if state:isStateEnabled("splash") then
-		splash.keypressed(key, isrepeat)
+		
+		if key == " " then
+
+			splashy.skipSplash()
+
+		end
+
 	end
 
 	loveframes.keypressed(key, isrepeat)
