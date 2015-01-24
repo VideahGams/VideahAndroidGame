@@ -8,9 +8,17 @@ function dif.load()
 	types[3] = "Hard"
 	types[4] = "Insane"
 
-	for i=1, 4 do
+	for i=1, 5 do
 
-		ui.createButton(types[i], (global.screenWidth / 2) - 145, 200 + 100 * i, 290, 100, {48, 62, 80}, function() dif.setDifficulty(string.lower(types[i])) end, "difficulty")
+		if i <= 4 then
+
+			ui.createButton(types[i], (global.screenWidth / 2) - 145, 200 + 120 * i, 290, 100, {48, 62, 80}, function() dif.setDifficulty(string.lower(types[i])) end, "difficulty")
+
+		else
+
+			ui.createButton("Back", (global.screenWidth / 2) - 145, 200 + 120 * i, 290, 100, {48, 62, 80}, function() state.fadeToState("menu", 0.5) end, "difficulty")
+
+		end
 
 	end
 
