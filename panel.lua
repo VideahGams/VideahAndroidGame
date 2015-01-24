@@ -15,6 +15,7 @@ function panel.load()
 	panel:addVariable("score", function() return game.score end)
 	panel:addVariable("isColorLocked", function() return tostring(ui.getBoolean(1)) end)
 	panel:addVariable("lockedcolor", function() return player.wheel.lockedcolor end)
+	panel:addVariable("difficulty", function() return game.difficulty end)
 
 end
 

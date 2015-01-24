@@ -5,6 +5,7 @@ player.wheel = {}
 function game.load()
 
 	game.isDown = false
+	game.difficulty = "easy"
 
 	player.wheel.image = love.graphics.newImage("data/images/gamecircle.png")
 	player.wheel.scale = 0.5
