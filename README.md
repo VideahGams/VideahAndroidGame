@@ -1,23 +1,8 @@
-## VideahAndroidGame
+![](https://i.imgur.com/bQYMoGm.png)
 
+Personal Love2D Engine Project.
 
-A small android game project to test VideahEngine on android.
-
-### Completed:
-
- * Mobile User Interface
- * Color-based lock option
- * Menu System
- * Player wheel with 2 types of turning
- 
-### TODO:
-
- * Gameplay
- * Juicing
- * Code Cleanup
- * More options
- * Look into potentional iOS Port
-
+Everything is Work in Progress, and there is currently no documentation.
 
 ## Licence
 
