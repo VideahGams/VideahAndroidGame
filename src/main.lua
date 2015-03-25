@@ -23,18 +23,6 @@ function love.load(arg)
 	engine.load()
 	game.load()
 
-	if CLIENT then
-		engine.network.startClient()
-	end
-
-	if SERVER then
-		if args["-gui"] then
-			engine.network.startServer(true)
-		else
-			engine.network.startServer(false)
-		end
-	end
-
 	if args["-debug"] then
 		_G.debugmode = true
 	end
@@ -98,14 +86,6 @@ function love.textinput(text)
 end
 
 function love.quit()
-
-	if CLIENT then
-		engine.network.client.disconnect()
-	end
-
-	if SERVER then
-		engine.network.server.send("shutdown")
-	end
 
 	print("Shutting down ...")
 
