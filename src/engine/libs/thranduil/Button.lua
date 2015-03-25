@@ -8,10 +8,11 @@ Button:implement(Base)
 Button:implement(Draggable)
 Button:implement(Resizable)
 
-function Button:new(ui, x, y, w, h, settings)
+function Button:new(ui, text, x, y, w, h, settings)
     self.ui = ui
     self.id = self.ui.addToElementsList(self)
     self.type = 'Button'
+    self.text = text
 
     self:basePreNew(x, y, w, h, settings)
 

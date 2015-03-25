@@ -5,6 +5,8 @@ game.playername = "Untitled Player"
 
 function game.load()
 
+	game.menu = engine.script.require("menu")
+
 	-- Set default state --
 	engine.state.setState("splash")
 
@@ -16,16 +18,25 @@ function game.load()
 	engine.panel.addVar("FPS", function() return _G.fps end)
 	--engine.input.mouse.bind("l", "click")
 
-	-- Menu Buttons --
-	engine.menu.addButton("Start", 0, 0, function() engine.state.setState("game") end)
-	engine.menu.addButton("Quit", 0, 0, function() love.event.quit() end)
+	local buttonwidth = 500
+	local buttonheight = 100
+	local buttonx = (_G.screenWidth / 2) - (buttonwidth / 2)
+	local buttony = 10
+
+	game.menu.addButton("Play", function() engine.state.setState("game") end)
+	game.menu.addButton("Options", function() print("TODO: Add Options Menu.") end)
+	game.menu.addButton("Quit", function() love.event.quit() end)
 
 end
 
 function game.draw()
 
 	if engine.state:isCurrentState("menu") then	
-		engine.menu.draw()
+		
+		love.graphics.setBackgroundColor(engine.uitheme.bg.color)
+
+		game.menu.draw()
+
 	end
 
 	if engine.state:isCurrentState("game") then
@@ -43,7 +54,7 @@ end
 function game.update(dt)
 
 	if engine.state:isCurrentState("menu") then
-		engine.menu.update(dt)
+		game.menu.update(dt)
 	end
 
 	if engine.state:isCurrentState("game") then

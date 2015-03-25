@@ -31,6 +31,8 @@ function engine.load(args)
 		math.random() -- Warm up random number generator
 	end
 
+	engine.uitheme = require(engine.path .. 'libs.thranduil.themes.videahmobile')
+
 	engine.ui.registerEvents()
 
 	print("Loaded VideahEngine " .. _G.version)
@@ -40,7 +42,11 @@ end
 function engine.draw()
 
 	if engine.state:isCurrentState("splash") then
+
+		love.graphics.setBackgroundColor(engine.uitheme.bg.color)
+
 		engine.splash.draw()
+
 	end
 
 	-- Debug --
